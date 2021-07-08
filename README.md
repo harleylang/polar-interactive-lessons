@@ -1,2 +1,4 @@
-# sveltekit-mdsvex-xstate-mwe
-A demo integration of sveltekit, xstate, and mdsvex
+# polar-interactive-lessons
+
+A series of interactive lessons about the Polar language.
+
