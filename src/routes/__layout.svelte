@@ -12,7 +12,6 @@
 			inspect({iframe: false, url: 'https://statecharts.io/inspect'});
 		};
 	})
-
 </script>
 
 <Header />

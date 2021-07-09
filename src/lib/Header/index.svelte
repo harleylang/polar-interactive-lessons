@@ -3,7 +3,7 @@
 </script>
 
 <header id='header'>
-	<p>This is a placeholder for the header component</p>
+	<h1>Polar Koalafications</h1>	
 </header>
 
 <style>
@@ -17,7 +17,7 @@ header {
 	padding-bottom: 40px;
 }
 
-p {
+h1 {
 	text-align: center;
 }
 

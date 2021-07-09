@@ -3,8 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter/index.svelte';
-	import HelloWorld from '$lib/Markdown/HelloWorld.svelte.md';
+	import Lesson1 from '$lib/Lessons/1-DenyByDefault/index.svelte.md';
 </script>
 
 <svelte:head>
@@ -12,11 +11,7 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<strong>Welcome!</strong>
-	</h1>
-	<Counter />
-	<HelloWorld />
+	<Lesson1 />
 </section>
 
 <style>
@@ -26,11 +21,6 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-		text-align: center;
 	}
 
 </style>
