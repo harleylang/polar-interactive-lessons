@@ -1,11 +1,4 @@
 import { createMachine, assign } from 'xstate';
-//import * as queryz from '$lib/QueryOso/dist/index.js';
-
-//let query = require('$lib/QueryOso/dist/index.js')
-
-//const query = import('$lib/QueryOso/dist/index.js');
-
-//console.log(query)
 
 interface MachineProps {
 	values: {
@@ -19,15 +12,19 @@ interface MachineProps {
 const query = async (qstr: string) => {
 
 	const oso = (window as any).oso;
-	
-	console.log(oso);
+
+	let newOso = new oso.Oso();
+
+	await newOso.loadStr('allow("steve", "get", "car");');
+
+	console.log(await newOso.isAllowed("steve","get","car"));
 
 	// TODO load / register classes in future lessons where required
 
 	// TODO: load user's inputted policy into the oso engine
 	// -> likely requires a try/catch in case there are errors returned by oso engine
 
-	let result = true//await oso.isAllowed();
+	let result = await newOso.isAllowed('_','_','_');
 
 	return result;
 
@@ -41,13 +38,11 @@ const queryStates = {
 
 		},
 		validate: {
-			/* invoke: {
+			invoke: {
 				src: ({values}: MachineProps) => async () => { return await query('') },
 				onDone: { actions: 'cacheResult', target: 'resolve' },
-				onError: {
-					// TODO: catch oso engine errors 
-				},
-			},  */
+				onError: { target: '#lessonMachine.error.oso'},
+			}, 
 		},
 		resolve: {
 			always: [
@@ -78,6 +73,7 @@ export const machine = createMachine<MachineProps>({
 		},
 	},
 	states: {
+
 		loading: {
 			on:{
 
@@ -91,6 +87,7 @@ export const machine = createMachine<MachineProps>({
 				// TODO: catch oso engine errors 
 			}, */
 		},
+
 		idle: {
 			type: 'parallel',
 			on: {
@@ -100,6 +97,14 @@ export const machine = createMachine<MachineProps>({
 			states: {
 				query: { ...queryStates }, 
 			}
+		},
+
+		error: {
+			states: {
+				oso: {
+					type: 'final',
+				},
+			},
 		},
 
 	}

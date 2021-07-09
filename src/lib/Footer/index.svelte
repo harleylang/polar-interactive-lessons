@@ -3,7 +3,8 @@
 </script>
 
 <footer id='footer'>
-	<p>This is a placeholder for the footer component</p>
+	<a href='https://www.osohq.com/'>OsoHq</a> 
+	| <a href='https://docs.osohq.com/'>Docs</a>
 </footer>
 
 <style>
@@ -19,6 +20,11 @@ footer {
 
 p {
 	text-align: center;
+}
+
+a {
+	padding-right: 8px;
+	padding-left: 8px;
 }
 
 </style>

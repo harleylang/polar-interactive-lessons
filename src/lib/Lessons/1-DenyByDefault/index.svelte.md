@@ -1,6 +1,7 @@
-<script>
+<script lang='ts'>
 	import { interpret } from 'xstate';
 	import { machine } from './machine';
+	import { onMount } from 'svelte';
 	let state;
 	const lessonMachine = interpret(machine, { devTools: true })
 		.onTransition((machineState) => {
