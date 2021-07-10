@@ -23,11 +23,8 @@ const queryOso = async (values: MachineProps['values']) => {
 	let Oso = new oso.Oso();
 
 	try {
-		// TODO: CATCH ERRORS AND DISPLAY TO USER
-		// -> likely requires a try/catch in case there are errors returned by oso engine
 		await Oso.loadStr(values.input);
 	} catch(error) {
-		console.log(error);
 		throw(error)
 	};
 
