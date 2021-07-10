@@ -3,17 +3,19 @@
 </script>
 
 <script lang="ts">
-	import Selection from '$lib/Selection/index.svelte';
+	import Apparatus from '$lib/Apparatus/index.svelte';
+	import { page } from "$app/stores";
+	const n = $page.path.split('/').slice(-1)[0];
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Lesson</title>
 </svelte:head>
 
 <section>
-	<h2>Welcome!</h2>
-	<p>Get started learning Polar. Choose a lesson below to begin.</p>
-	<Selection lesson={0} />
+	{#key n}
+		<Apparatus lesson={n} />
+	{/key}
 </section>
 
 <style>
@@ -24,8 +26,5 @@
 		align-items: flex-start;
 		flex: 1;
 	}
-	p {
-		width: 100%;
-		text-align: center;
-	}
 </style>
+

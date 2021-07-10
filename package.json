@@ -38,6 +38,7 @@
     "codemirror": "^5.62.0",
     "confetti-js": "0.0.18",
     "cookie": "^0.4.1",
+    "oso-browser-quickstart": "file:oso",
     "xstate": "^4.22.0"
   }
 }
