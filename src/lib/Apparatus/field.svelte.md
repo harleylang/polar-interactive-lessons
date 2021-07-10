@@ -49,9 +49,18 @@
 
 ### Objectives:
 
-{#each objectives as { desc }, i}
+{#each objectives as { desc, expected }, i}
 * {desc}
-    * Result:
+	- Expected: <code>{expected}</code>
+	- Received: 
+		{#if state.context.values.results.length > 0 } 
+			<code>{state.context.values.results[i].result}</code>
+		{:else if state.matches('idle.query.error.oso')}
+			<span class='error'>Please resolve the error message below.</span>	
+		{:else} 
+			Idle -- write your policies and press submit to continue.	
+		{/if} 
+	- Result:
 		{#if state.context.values.results.length > 0 } 
 			{#if state.context.values.results[i].expected === state.context.values.results[i].result}
 				<span class='valid'>Passing!</span>
