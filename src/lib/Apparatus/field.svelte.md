@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import 'codemirror/lib/codemirror.css'
 	import 'codemirror/theme/elegant.css'
 	import ConfettiGenerator from 'confetti-js';
@@ -26,7 +26,9 @@
 	const confetti = (newState) => {
 		if (typeof canvas === 'undefined' && typeof document !== 'undefined') {
 			let element = document.getElementById("wahho_celebrategoodtimescmon_itsacelebration_");
-			canvas = new ConfettiGenerator({ target: element, animate: true });
+			if (element !== null) {
+				canvas = new ConfettiGenerator({ target: element, animate: true });
+			};
 		};
 		if (newState.matches('idle.query.valid') 
 		&& typeof canvas !== 'undefined' 
@@ -67,7 +69,11 @@
 			editor.setValue(state.context.values.input)
 		}
 	})
-
+	onDestroy(() => {
+		if (typeof editor !== 'undefined') {
+			editor.toTextArea();
+		};
+  	})
 </script>
 
 <canvas id="wahho_celebrategoodtimescmon_itsacelebration_"></canvas>
@@ -139,12 +145,9 @@ STATE CONDITION: {JSON.stringify(state.value)}
 STATE CONTEXT: {JSON.stringify(state.context.values)} -->
 
 <style>
-	button, input {
+	button {
 		margin-top: 16px;
 		margin-bottom: 16px;
-	}
-	input {
-		width: calc(100% - 19px);
 	}
 	span.valid {
 		color: green;
@@ -167,7 +170,7 @@ STATE CONTEXT: {JSON.stringify(state.context.values)} -->
 		border-radius: 10px;
 	}
 	canvas#wahho_celebrategoodtimescmon_itsacelebration_ {
-		position:absolute;
+		position: fixed;
 		width: 100%;
 		height: 100%;
 		left:0;

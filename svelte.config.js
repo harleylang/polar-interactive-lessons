@@ -1,6 +1,7 @@
 import preprocess from 'svelte-preprocess';
 import replace from '@rollup/plugin-replace';
 import { mdsvex } from 'mdsvex';
+import { resolve } from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
