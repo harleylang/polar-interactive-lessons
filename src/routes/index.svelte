@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Apparatus from '$lib/Apparatus/index.svelte.md';
+	import Apparatus from '$lib/Apparatus/index.svelte';
 </script>
 
 <svelte:head>
