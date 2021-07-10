@@ -16,4 +16,4 @@
 
 ## Lesson 1 -- Deny by default
 
-Polar is deny by default, meaning that all queries are denied unless the knowledge base contains a matching policy that grants access. Testing!
+Polar is deny by default, meaning that all queries are denied unless the knowledge base contains a matching policy that grants access.

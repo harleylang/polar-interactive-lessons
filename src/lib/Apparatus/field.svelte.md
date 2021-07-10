@@ -16,11 +16,24 @@
 		.onTransition((machineState) => {
 			state = machineState
 		}).start();
+	var canvas;
+	let set = false; 
 	const confetti = (newState) => {
-		if (newState.matches('idle.query.valid')) {
-			let canvas = document.getElementById("wahho_celebrategoodtimescmon_itsacelebration_")
-			let c = new ConfettiGenerator({ target: canvas });
-			c.render();
+		if (typeof canvas === 'undefined' && typeof document !== 'undefined') {
+			let element = document.getElementById("wahho_celebrategoodtimescmon_itsacelebration_");
+			canvas = new ConfettiGenerator({ target: element, animate: true });
+		};
+		if (newState.matches('idle.query.valid') 
+		&& typeof canvas !== 'undefined' 
+		&& !set) {			
+			let element = document.getElementById("wahho_celebrategoodtimescmon_itsacelebration_");
+			canvas = new ConfettiGenerator({ target: element, animate: true });
+			canvas.render();
+			set = true;
+		} else if (['idle.query.invalid', 'idle.query.error'].some(newState.matches) 
+		&& typeof canvas !== 'undefined') {
+			canvas.clear();
+			set = false;
 		};
 	};
 	$: {
@@ -113,6 +126,8 @@ STATE CONTEXT: {JSON.stringify(state.context.values)} -->
 	}
 	canvas#wahho_celebrategoodtimescmon_itsacelebration_ {
 		position:absolute;
+		width: 100%;
+		height: 100%;
 		left:0;
 		top:0;
 		z-index:-1;
