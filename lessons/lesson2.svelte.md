@@ -7,9 +7,24 @@
 	};
 	export const objectives: Test[] = [
 		{
+			desc: 'Write an allow statement that grants `boss` access to act on any resource.',
+			query: ['boss','_','_'],
+			expected: true,
+		},
+		{
+			desc: 'Ensure that only defined users can act on resources (no "allow all" statements).',
+			query: ['_','_','_'],
+			expected: false,
+		},
+		{
 			desc: 'Write an allow statement that grants `sam` access to `read` anything.',
 			query: ['sam','read','_'],
 			expected: true,
+		},
+		{
+			desc: 'Ensure that `sam` cannot act on any resource.',
+			query: ['sam','_','_'],
+			expected: false,
 		},
 		{
 			desc: 'Write an allow statement that grants `harley` access to `read` the resource `book`.',
@@ -17,7 +32,7 @@
 			expected: true,
 		},
 		{
-			desc: 'Ensure that `harley` cannot access everything.',
+			desc: 'Ensure that `harley` cannot `read` everything.',
 			query: ['harley','read','_'],
 			expected: false,
 		}
