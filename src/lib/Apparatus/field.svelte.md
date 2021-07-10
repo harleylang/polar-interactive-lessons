@@ -103,7 +103,7 @@
 		{:else if state.matches('idle.query.error.oso')}
 			<span class='error'>Please resolve the error message below.</span>	
 		{:else} 
-			Idle -- write your policies and press submit to continue.	
+			<span class='idle'>Idle -- write your policies and press submit to continue.</span>
 		{/if} 
 	- Result:
 		{#if state.context.values.results.length > 0 } 
@@ -115,7 +115,7 @@
 		{:else if state.matches('idle.query.error.oso')}
 			<span class='error'>Please resolve the error message below.</span>	
 		{:else} 
-			Idle -- write your policies and press submit to continue.	
+			<span class='idle'>Idle -- write your policies and press submit to continue.</span>
 		{/if} 
 
 {/each}
@@ -161,6 +161,10 @@ STATE CONTEXT: {JSON.stringify(state.context.values)} -->
 	span.error {
 		color: #0080ff;
 		font-weight: 800;
+	}
+	span.idle {
+		color: #7d7d7d;
+		font-style: italic;
 	}
 	code.error {
 		width: calc(100% - 64px);
