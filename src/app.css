@@ -15,3 +15,8 @@
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 }
+
+h1, h2 {
+	width: 100%;
+	text-align: center;
+}

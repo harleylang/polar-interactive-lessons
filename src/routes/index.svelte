@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Lesson1 from '$lib/Lessons/1-DenyByDefault/index.svelte.md';
+	import Apparatus from '$lib/Apparatus/index.svelte.md';
 </script>
 
 <svelte:head>
@@ -11,7 +11,7 @@
 </svelte:head>
 
 <section>
-	<Lesson1 />
+	<Apparatus />
 </section>
 
 <style>
@@ -19,8 +19,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		flex: 1;
 	}
-
 </style>
