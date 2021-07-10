@@ -7,7 +7,7 @@
 	};
 	export const objectives: Test[] = [
 		{
-			desc: 'Press the submit button to observe deny by default behaviour.',
+			desc: 'Leave your policy empty and press the submit button to observe deny by default behaviour.',
 			query: ['_','_','_'],
 			expected: false,
 		}
