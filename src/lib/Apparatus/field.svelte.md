@@ -112,9 +112,9 @@ STATE CONTEXT: {JSON.stringify(state.context.values)} -->
 		border-radius: 10px;
 	}
 	canvas#wahho_celebrategoodtimescmon_itsacelebration_ {
-		      position:absolute;
-      left:0;
-      top:0;
-      z-index:-1;
+		position:absolute;
+		left:0;
+		top:0;
+		z-index:-1;
 	}
 </style>
