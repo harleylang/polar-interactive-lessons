@@ -80,10 +80,20 @@
 
 {#each objectives as { desc, expected }, i}
 * {desc}
-	- Expected: <code>{expected}</code>
-	- Received: 
+	- Expected access: <code>{expected}</code> / 
+			{#if expected}
+				<code>access granted</code>
+			{:else}
+				<code>access denied</code>
+			{/if} 
+	- Returned access: 
 		{#if state.context.values.results.length > 0 } 
-			<code>{state.context.values.results[i].result}</code>
+			<code>{state.context.values.results[i].result}</code> / 
+			{#if state.context.values.results[i].result}
+				<code>access granted</code>
+			{:else}
+				<code>access denied</code>
+			{/if}
 		{:else if state.matches('idle.query.error.oso')}
 			<span class='error'>Please resolve the error message below.</span>	
 		{:else} 
@@ -104,7 +114,7 @@
 
 {/each}
 
-### Your Policy:
+### Your Policy File:
 
 <textarea bind:this={textarea} />
 
