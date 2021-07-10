@@ -34,10 +34,10 @@ Oso is a policy engine that reads polar policy files to form a knowledge base of
 
 > allow(user, action, resource);
 
-For example, the following statement allows `Harley` to `read` any resource:
+For example, the following statement allows `harley` to `read` any resource:
 
 > allow("harley","read", _);
 
-In contrast the following statement only allows `Harley` to read `book` resources:
+In contrast the following statement only allows `harley` to read `book` resources:
 
 > allow("harley","read","book");
