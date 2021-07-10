@@ -1,4 +1,7 @@
 <script lang='ts'>
+	import { onMount } from 'svelte';
+	import 'codemirror/lib/codemirror.css'
+	import 'codemirror/theme/elegant.css'
 	import ConfettiGenerator from 'confetti-js';
 	import { interpret } from 'xstate';
 	import { machine } from './machine';
@@ -16,6 +19,8 @@
 		.onTransition((machineState) => {
 			state = machineState
 		}).start();
+
+	// confetti
 	var canvas;
 	let set = false; 
 	const confetti = (newState) => {
@@ -39,6 +44,30 @@
 	$: {
 		confetti(state); 
 	};
+
+	// codemirror
+	// also see: https://github.com/idris-maps/svelte-parts/tree/master/packages/editor
+	let textarea;
+	let editor;
+	onMount(async () => {
+		let CodeMirror = await import('codemirror');
+		editor = CodeMirror.fromTextArea(textarea,{
+			lineNumbers: true,
+			lineWrapping: true,
+			theme: 'elegant'
+		});
+		editor.setSize('100%', '100%');
+		editor.on('change', (e) => {
+			let input = e.getValue().replace(/'/g, '"') 
+			lessonMachine.send('INPUT', { 
+				input: input
+			})
+		})
+		if (typeof state !== 'undefined') {
+			editor.setValue(state.context.values.input)
+		}
+	})
+
 </script>
 
 <canvas id="wahho_celebrategoodtimescmon_itsacelebration_"></canvas>
@@ -77,20 +106,7 @@
 
 ### Your Policy:
 
-<input 
-	value={state.context.values.input} 
-	on:input={
-		(e) =>  {
-			lessonMachine.send('INPUT', { input: e.target.value.replace(/'/g, '"') })
-		}
-	}
-	on:keyup|preventDefault={
-		(e) => {
-			if (e.code === 'Enter') {
-				lessonMachine.send('SUBMIT')
-			}
-		}
-	} />
+<textarea bind:this={textarea} />
 
 <button on:click={() => lessonMachine.send('SUBMIT')}>
 	Submit	

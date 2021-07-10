@@ -35,6 +35,7 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
+    "codemirror": "^5.62.0",
     "confetti-js": "0.0.18",
     "cookie": "^0.4.1",
     "xstate": "^4.22.0"
