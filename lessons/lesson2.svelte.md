@@ -7,12 +7,12 @@
 	};
 	export const objectives: Test[] = [
 		{
-			desc: 'Write an allow statement that allows `sam` to `read` anything.',
+			desc: 'Write an allow statement that grants `sam` access to `read` anything.',
 			query: ['sam','read','_'],
 			expected: true,
 		},
 		{
-			desc: 'Write an allow statement that allows `harley` to `read` the resource `book`.',
+			desc: 'Write an allow statement that grants `harley` access to `read` the resource `book`.',
 			query: ['harley','read','book'],
 			expected: true,
 		},
