@@ -59,7 +59,7 @@
 				<span class='invalid'>Failing.</span>
 			{/if}
 		{:else if state.matches('idle.query.error.oso')}
-			<span class='error'>Please resolve error message below.</span>	
+			<span class='error'>Please resolve the error message below.</span>	
 		{:else} 
 			Idle -- write your policies and press submit to continue.	
 		{/if} 
@@ -71,10 +71,17 @@
 <input 
 	value={state.context.values.input} 
 	on:input={
-	(e) =>  {
-		lessonMachine.send('INPUT', { input: e.target.value.replace(/'/g, '"') })
+		(e) =>  {
+			lessonMachine.send('INPUT', { input: e.target.value.replace(/'/g, '"') })
+		}
 	}
-} />
+	on:keyup|preventDefault={
+		(e) => {
+			if (e.code === 'Enter') {
+				lessonMachine.send('SUBMIT')
+			}
+		}
+	} />
 
 <button on:click={() => lessonMachine.send('SUBMIT')}>
 	Submit	
