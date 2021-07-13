@@ -28,16 +28,6 @@ const Home = ({
 
 	const { dimensions } = useWindowDimensions();
 
-    const dat = {
-        "tests": [
-            {
-            "desc": "Leave your policy file empty and press the submit button to observe deny-by-default behaviour.",
-            "query": ["_","_","_"],
-            "expected": false
-            }
-        ]
-    }
-
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         
         let lessonIndex = parseInt(event.currentTarget.value);
