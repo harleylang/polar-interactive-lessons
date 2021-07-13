@@ -1,0 +1,6 @@
+{
+    "short_name": "example.com",
+    "name": "example.com",
+    "start_url": ".",
+    "display": "standalone"
+  }

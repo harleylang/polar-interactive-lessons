@@ -1,11 +1,6 @@
-<script lang='ts'>
-	interface Test {
-		desc: string;
-		query: [string, string, string];
-		expected: boolean;
-		result?: boolean;
-	};
-	export const objectives: Test[] = [
+export const meta = {
+    author: 'Harley Lang',
+	tests: [
 		{
 			desc: 'Write an allow statement that grants `boss` access to act on any resource.',
 			query: ['boss','_','_'],
@@ -36,8 +31,8 @@
 			query: ['harley','read','_'],
 			expected: false,
 		}
-	];
-</script>
+	]
+};
 
 ## Lesson 2 -- Allow statements 
 
