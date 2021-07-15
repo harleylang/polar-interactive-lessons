@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import useWindowDimensions from 'functions/useWindowDimensions';
 
-import 'try-polar';
+import 'hello-polar';
 
 import * as lessondat from 'lessons';
 
@@ -64,7 +64,7 @@ const Home = ({
                     </>
                 }
                 {context.length > 0 && (
-                    <try-polar key={context} context={context} />
+                    <hello-polar key={context} context={context} />
                 )}
             </Narrow>
         
